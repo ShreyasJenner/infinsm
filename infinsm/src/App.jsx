@@ -10,48 +10,19 @@ import { useState, useCallback } from "react";
 import '@xyflow/react/dist/style.css';
 
 import { TaskNode, endNode, startNode,forkNode, joinNode } from "./components/State";
+import { blockingEdge, nonBlockingEdge } from "./components/Edges";
 
-// get node types
+import { initialEdges, initialNodes } from "./assets/InitialSetup";
+
+// get node and edge types
 const nodeTypes = {taskNode: TaskNode, startNode: startNode, endNode: endNode, 
   forkNode: forkNode, joinNode: joinNode, 
 };
+const edgeTypes = {blockingEdge: blockingEdge, nonBlockingEdge: nonBlockingEdge};
 
-const initialNodes = [
-  {
-    id: '1',
-    data: { label: 'Hello' },
-    position: { x: 0, y: 0 },
-    type: 'taskNode',
-  },
-  {
-    id: '2',
-    data: { label: 'World', body: 'this is body' },
-    position: { x: 100, y: 100 },
-    type: 'taskNode'
-  },
-  {
-    id: '3',
-    position: {x: 150, y: 150},
-    type: 'endNode'
-  },
-  {
-    id: '4',
-    position: {x: 50, y: 50},
-    type: 'startNode',
-  },
-  {
-    id: '5',
-    position: {x: 10, y: 10},
-    type: 'forkNode',
-  },
-  {
-    id: '6',
-    position: {x: 30, y: 10},
-    type: 'joinNode',
-  },
-];
- 
-const initialEdges = [];
+// get nodes and edges
+
+
 
 function App() {
   const [nodes, setNodes] = useState(initialNodes);
@@ -79,10 +50,11 @@ function App() {
       colorMode="dark"
       nodes={nodes} 
       edges={edges}
+      nodeTypes={nodeTypes}
+      edgeTypes={edgeTypes}
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
-      nodeTypes={nodeTypes}
       fitView
       >
         <Background />
