@@ -1,15 +1,15 @@
 const initialNodes = [
     {
       id: '1',
-      data: { label: 'Hello' },
+      data: { body: 'Hello' },
       position: { x: 0, y: 0 },
-      type: 'taskNode',
+      type: 'TaskNode',
     },
     {
       id: '2',
-      data: { label: 'World', body: 'this is body' },
+      data: { body: 'this is body' },
       position: { x: 100, y: 100 },
-      type: 'taskNode'
+      type: 'TaskNode'
     },
 ];
    

@@ -5,33 +5,30 @@ Edges are of the following two types:
 2. Blocking - The prequisite task nodes have not been completed; the edge does not allow traversal
 */
 
-import { BaseEdge,getBezierPath } from "@xyflow/react";
+import { BaseEdge, getBezierPath } from "@xyflow/react";
 
-function blockingEdge({id, sourceX, sourceY, targetX, targetY}) {
-    const [edgePath] = getBezierPath({sourceX, sourceY, targetX, targetY});
+const BlockingEdge = ({ id, sourceX, sourceY, targetX, targetY }) => {
+    const [edgePath] = getBezierPath({ sourceX, sourceY, targetX, targetY });
 
     return (
         <BaseEdge 
-        id={id}
-        path={edgePath}
-        style={{stroke: '#ff0000', strokeWidth: 1}}
+            id={id}
+            path={edgePath}
+            style={{ stroke: 'red', strokeWidth: 1 }}
         />
     );
-}
+};
 
-function nonBlockingEdge({id, sourceX, sourceY, targetX, targetY}) {
-    const [edgePath] = getBezierPath({sourceX, sourceY, targetX, targetY});
+const NonBlockingEdge = ({ id, sourceX, sourceY, targetX, targetY }) => {
+    const [edgePath] = getBezierPath({ sourceX, sourceY, targetX, targetY });
 
     return (
         <BaseEdge 
-        id={id}
-        path={edgePath}
-        style={{stroke: 'green', strokeWidth: 1}}
+            id={id}
+            path={edgePath}
+            style={{ stroke: 'green', strokeWidth: 1 }}
         />
-    )
-}
+    );
+};
 
-export {
-    blockingEdge,
-    nonBlockingEdge,
-}
+export { BlockingEdge, NonBlockingEdge };

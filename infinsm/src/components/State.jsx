@@ -9,6 +9,7 @@ The different states are:
 */
 
 import { Handle, Position } from "@xyflow/react";
+import { useState } from "react";
 
 const startNodeStyle = {
     width: 20,
@@ -47,11 +48,22 @@ function endNode() {
     );
 }
 
-function TaskNode({data}) {
+function TaskNode({id, data}) {
+    const [done, setDone] = useState(false);
+
+    // function that will toggle state of clicked node
+    const completeTask = (done, setDone) => {
+        setDone(!done);
+        data.updateEdges(id, done);
+    }
+
     return (
-        <div className="react-flow__node-default">
+        <div 
+        onClick={() => completeTask(done, setDone)} 
+        className="react-flow__node-default"
+        >
             <Handle type="target" position={Position.Left} />
-            <div className="react-flow__node-header">{data.label}</div>
+            <div className="react-flow__node-header"></div>
             <div className="react-flow__node-body">{data.body}</div>
             <Handle type="source" position={Position.Right} />
         </div>
