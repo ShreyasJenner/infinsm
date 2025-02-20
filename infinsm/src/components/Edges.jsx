@@ -5,10 +5,10 @@ Edges are of the following two types:
 2. Blocking - The prequisite task nodes have not been completed; the edge does not allow traversal
 */
 
-import { BaseEdge, getBezierPath } from "@xyflow/react";
+import { BaseEdge, getSmoothStepPath } from "@xyflow/react";
 
 const BlockingEdge = ({ id, sourceX, sourceY, targetX, targetY }) => {
-    const [edgePath] = getBezierPath({ sourceX, sourceY, targetX, targetY });
+    const [edgePath] = getSmoothStepPath({ sourceX, sourceY, targetX, targetY });
 
     return (
         <BaseEdge 
@@ -20,7 +20,7 @@ const BlockingEdge = ({ id, sourceX, sourceY, targetX, targetY }) => {
 };
 
 const NonBlockingEdge = ({ id, sourceX, sourceY, targetX, targetY }) => {
-    const [edgePath] = getBezierPath({ sourceX, sourceY, targetX, targetY });
+    const [edgePath] = getSmoothStepPath({ sourceX, sourceY, targetX, targetY });
 
     return (
         <BaseEdge 
